@@ -1,0 +1,9 @@
+[Unit]
+Description=Process LendariosONE BOT
+[Service]
+Type=forking
+Restart=always
+RestartSec=1
+ExecStart=/usr/bin/php /var/www/html/NEBot/scripts/process.php
+[Install]
+WantedBy=multi-user.target
