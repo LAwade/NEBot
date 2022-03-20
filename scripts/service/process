@@ -1,0 +1,55 @@
+#!/bin/bash
+#serviço API's Lendários TeaM
+
+# chkconfig: 3 98 99
+# description: Server BOT Process
+
+RETVAL=0
+script="process.php"
+function start() {
+    if [ "$(ps aux | grep $script | grep -v grep)" != "" ]; then
+        echo "O script $script já está em execução."
+        exit 1
+    else
+        php /var/www/html/NEBot/scripts/bot/$script &
+        echo "Server BOT starting..."
+    fi
+}
+
+function stop() {
+    php /var/www/html/NEBot/scripts/bot/$script KILL
+    kill $(ps aux | grep $script | grep -v "grep" | awk '{print $2}')
+    echo "Server BOT disconnect!"
+}
+
+function status() {
+    if [ "$(ps aux | grep $script | grep -v "grep")" != "" ]; then
+        return="Server BOT Running."
+    else
+        return="Server BOT Stopped."
+    fi
+    echo $return
+}
+
+case "$1" in
+start)
+    start
+    ;;
+stop)
+    stop
+    ;;
+restart)
+    stop
+    sleep 2
+    start
+    ;;
+status)
+    status
+    ;;
+*)
+    echo "Uso: $0 {start|stop|restart|status}"
+    RETVAL=1
+    ;;
+esac
+
+exit $RETVAL
