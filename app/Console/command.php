@@ -3,7 +3,7 @@
 require_once __DIR__ . "/../../config/includes.php";
 
 $server = docker_env();
-$idbot = $server['SERVER_ID'];
+$idbot = $argv[1] ? $argv[1] : $server['SERVER_ID'];
 
 if ($idbot) {
     $command = new App\Consumers\CommandBot();
