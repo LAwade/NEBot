@@ -1,7 +1,6 @@
 FROM php:7.4-fpm
 
-ARG COMMAND_SERVER_ID
-ENV DOCKER_SERVER_ID=$COMMAND_SERVER_ID
+ENV DOCKER_SERVER_ID=0
 
 RUN apt-get update -y
 RUN apt-get install git unzip libpq-dev -y --no-install-recommends openssl libssl-dev libcurl4-openssl-dev \
@@ -27,6 +26,7 @@ RUN ln -s /bin/composer-setup.php composer
 RUN php -r "unlink('composer-setup.php');"
 
 RUN php composer.phar install
-ENTRYPOINT [ "php", "app/Console/command.php", "$DOCKER_SERVER_ID" ]
+
+ENTRYPOINT [ "php", "app/Console/command.php", "$DOCKER_SERVER_ID"]
 
 CMD ["php"]
