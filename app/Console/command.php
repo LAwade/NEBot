@@ -2,7 +2,7 @@
 
 require_once __DIR__ . "/../../config/includes.php";
 
-$idbot = $argv[1];
+$idbot = $SERVER_ID;
 
 if ($idbot) {
     $command = new App\Consumers\CommandBot();
