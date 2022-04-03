@@ -24,9 +24,9 @@ function configure($namefile)
     }
 }
 
-function docker_env($dockerenv = "docker.env")
+function file_env($file_env = "file_env")
 {
-    $file_path = __DIR__ . "/../config/{$dockerenv}";
+    $file_path = __DIR__ . "/../config/{$file_env}";
 
     if (file_exists($file_path)) {
         if ($file = fopen($file_path, "r")) {
