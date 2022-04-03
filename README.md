@@ -18,4 +18,4 @@ Docker start service worker to write System BOT
 
 Docker start service command to write System BOT
 
-- docker run -d -it --rm -e "DOCKER_SERVER_ID=1" --name nexpbotcommand nexpbotcommand
+- docker run -d --name nexpbotcommand -e COMMAND_SERVER_ID="1" nexpbotcommand
