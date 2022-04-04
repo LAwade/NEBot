@@ -2,7 +2,9 @@
 
 require_once __DIR__ . "/../../config/includes.php";
 
-$idbot = $argv[1] ?? $CONF_BOT_SERVER_ID;
+$idbot = $argv[1] ?? getenv('CONF_BOT_SERVER_ID');
+
+echo $idbot;
 
 if ($idbot) {
     echo $idbot;
