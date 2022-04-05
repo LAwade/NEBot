@@ -1,7 +1,5 @@
 <?php
 
-var_dump("VARIAVEL AMBIENTE: " . getenv('CONF_BOT_SERVER_ID'));
-
 require_once __DIR__ . "/../../config/includes.php";
 
 use React\EventLoop\Loop;
