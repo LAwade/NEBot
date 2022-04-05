@@ -7,7 +7,8 @@ use App\Consumers\CommandBot;
 
 $idbot = $argv[1] ?? getenv('CONF_BOT_SERVER_ID');
 
-$timer = Loop::addPeriodicTimer(60, function () use ($idbot) {
+$timer = Loop::addPeriodicTimer(10, function () use ($idbot) {
+    echo $idbot;
     $command = new CommandBot();
     $command->start($idbot);
 });
