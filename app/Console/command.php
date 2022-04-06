@@ -2,11 +2,12 @@
 
 require_once __DIR__ . "/../../config/includes.php";
 
+use React\EventLoop\Loop;
 use App\Consumers\CommandBot;
 
 $idbot = getenv('CONF_BOT_SERVER_ID');
 
-if($idbot)
+$timer = Loop::addPeriodicTimer(10, function () use ($idbot) {
     $command = new CommandBot();
     $command->start($idbot);
-}
+});
