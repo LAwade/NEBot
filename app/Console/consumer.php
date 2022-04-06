@@ -11,8 +11,6 @@ use React\EventLoop\Loop;
 
 $bot = new TibiaBOTCase(new TibiaProvider, new TSAdminProvider, new MongoDBProvider, new MessageTSProvider);
 
-$timer = Loop::addPeriodicTimer(40, function () use ($bot) {
+$timer = Loop::addPeriodicTimer(20, function () use ($bot) {
     $bot->handle();
 });
-
-?>
