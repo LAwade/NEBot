@@ -25,6 +25,6 @@ RUN php -r "unlink('composer-setup.php');"
 
 RUN php composer.phar install
 
-ENTRYPOINT [ "php", "app/Console/consumer.php" ]
+ENTRYPOINT [ "php" ]
 
-CMD [ "php" ]
+CMD [ "app/Console/consumer.php" ]

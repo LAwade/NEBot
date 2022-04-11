@@ -1,5 +1,7 @@
 <?php
 
+ini_set("memory_limit", "512M");
+
 require_once __DIR__ . "/../../config/includes.php";
 
 use App\Cases\TibiaBOTCase;

@@ -67,7 +67,6 @@ class TibiaBOTCase
                 ->get();
 
             foreach ($tibiasv as $sv) {
-                echo "##################### " . $sv->host . " ##################### \n\n";
                 $this->tibia = $sv;
                 $connect = $this->tsAdmin->connect($sv->host, $sv->queryport, $sv->querylogin, $sv->querypassword);
                 $success = $this->tsAdmin->selectInstance($sv->port);

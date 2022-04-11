@@ -1,7 +1,5 @@
 FROM php:7.4-fpm
 
-ENV CONF_BOT_SERVER_ID=0
-
 RUN apt-get update -y
 RUN apt-get install git unzip libpq-dev -y --no-install-recommends openssl libssl-dev libcurl4-openssl-dev \
     && docker-php-ext-install pgsql pdo_pgsql \
@@ -27,6 +25,6 @@ RUN php -r "unlink('composer-setup.php');"
 
 RUN php composer.phar install
 
-ENTRYPOINT [ "php", "app/Console/command.php", "$CONF_BOT_SERVER_ID"]
+ENTRYPOINT [ "php" ]
 
-CMD ["php"]
+CMD [ "app/Console/command.php" ]
