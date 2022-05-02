@@ -11,7 +11,7 @@ Docker start Service API
 Docker start service consumer Data MongoDB
 
 - docker image build --no-cache -t nexpbotconsumer .
-- docker run -d --name nexpbotconsumer nexpbotconsumer
+- docker run -d --name nexpbotconsumer --restart=always nexpbotconsumer
 
 Docker start service worker to write System BOT
 

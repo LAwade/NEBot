@@ -51,7 +51,7 @@ class TibiaBOTCase
         $this->tsAdmin = $tsAdmin;
         $this->mongodb = $mongodb;
         $this->message = $message;
-        $this->mongodb = $mongodb->connection('admin', 'Hunt3r195', '165.22.3.4:27017', 'tibiabot', 'admin');
+        $this->mongodb = $mongodb->connection(getenv('CONF_MONGODB_USER'), getenv('CONF_MONGODB_PASSWD'), getenv('CONF_MONGODB_HOST'), getenv('CONF_MONGODB_COLLECTIONS'), getenv('CONF_MONGODB_SOURCE'));
     }
 
     public function handle()

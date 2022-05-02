@@ -2,6 +2,9 @@ version: '3'
 networks:
     working:
         driver: bridge
+volumes:
+    files-bot:
+        driver: local
 services:
     api:
         build: nexpbot
@@ -15,6 +18,8 @@ services:
             - mongo
         networks: 
             - working
+        volumes:
+            - files-bot:/var/www/html/NEBot
     tibiaapi:
         build: tibiaapi
         container_name: tibiaapi
@@ -62,5 +67,6 @@ services:
             - api
         networks:  
             - working
+        
         
             
