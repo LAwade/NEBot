@@ -27,7 +27,7 @@ COPY crontab /etc/crontab
 COPY process.service /etc/systemd/system/
 
 WORKDIR /var/www/html/
-RUN git clone https://lawade:211195Lu@github.com/LAwade/TSManager.git
+RUN git clone https://lawade:senhagithub.com/LAwade/TSManager.git
 
 WORKDIR /var/www/html/TSManager/
 RUN git pull
