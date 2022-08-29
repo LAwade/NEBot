@@ -28,7 +28,6 @@ class TSAdminProvider implements ITSAdmin
     public function connect($host, $queryport, $username, $password)
     {
         try {
-            //set_time_limit(10);
             if ($host && $queryport && $username && $password) {
                 $this->tsAdmin = new TS3Admin($host, $queryport);
                 $connect = $this->tsAdmin->connect();
@@ -41,6 +40,7 @@ class TSAdminProvider implements ITSAdmin
         } catch (Exception $ex) {
             return false;
         }
+        return false;
     }
 
     public function selectInstance($port)
@@ -130,7 +130,8 @@ class TSAdminProvider implements ITSAdmin
         return false;
     }
 
-    public function isServerAdmin($clid){
+    public function isServerAdmin($clid)
+    {
         $permissions = [
             'b_virtualserver_token_list',
             'b_virtualserver_token_add',
@@ -141,26 +142,47 @@ class TSAdminProvider implements ITSAdmin
             'b_virtualserver_modify_reserved_slots',
             'b_virtualserver_modify_hostmessage',
             'b_virtualserver_modify_hostbanner',
-            'b_virtualserver_modify_default_messages',
-            'b_virtualserver_join_ignore_password'
+            'b_virtualserver_modify_default_messages'
         ];
 
         $client = $this->tsAdmin()->clientInfo($clid);
-        $serverGroup = explode(',',$client['data']['client_servergroups']);
-        foreach($serverGroup as $cligrp){
-            $countPerm = 0;
+        $serverGroup = explode(',', $client['data']['client_servergroups']);
+        $countPerm = 0;
+        foreach ($serverGroup as $cligrp) {
             $groupPerm = $this->tsAdmin()->serverGroupPermList($cligrp, true);
-            foreach($groupPerm['data'] as $prm){
-                if(in_array($prm['permsid'], $permissions)){
+            foreach ($groupPerm['data'] as $prm) {
+                if (in_array($prm['permsid'], $permissions) ) {
                     $countPerm++;
-                }
-
-                if(count($permissions) == $countPerm){
-                    return ['success' => true];
                 }
             }
         }
+
+        if (count($permissions) == $countPerm) {
+            return ['success' => true];
+        }
         return ['success' => false, 'permissions' => $permissions];
+    }
+
+    public function isAdmin($clid, $data, $claimed = null)
+    {
+        $client = $this->tsAdmin()->clientInfo($clid);
+        $groupsClient = explode(',', $client['data']['client_servergroups']);
+        $return = [ 'success' => false, 'sgroup' => ['admin' => false, 'claimed' => false] ];
+        foreach ($groupsClient as $gp) {
+            if (in_array($gp, $data)) {
+                if($gp == $claimed){
+                    $return['sgroup']['claimed'] = true;
+                } else {
+                    $return['sgroup']['admin'] = true;
+                }
+            }
+        }
+
+        if($return){
+            $return['success'] = true;
+            return $return;
+        }
+        return ['success' => false];
     }
 
     public function errorTeamSpeak($data)

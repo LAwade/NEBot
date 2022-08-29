@@ -2274,7 +2274,7 @@ class TS3Admin {
      * @param		string	$dirname	dirPath
      * @return     boolean success
      */
-    function ftCreateDir($cid, $cpw = null, $dirname) {
+    function ftCreateDir($cid, $cpw, $dirname) {
         if (!$this->runtime['selected']) {
             return $this->checkSelected();
         }
@@ -2301,7 +2301,7 @@ class TS3Admin {
      * @param		array	$files	files
      * @return     boolean success
      */
-    function ftDeleteFile($cid, $cpw = '', $files) {
+    function ftDeleteFile($cid, $cpw, $files) {
         if (!$this->runtime['selected']) {
             return $this->checkSelected();
         }
@@ -2365,7 +2365,7 @@ class TS3Admin {
      * @param		string 	$file	path to file
      * @return     boolean success
      */
-    function ftGetFileInfo($cid, $cpw = '', $file) {
+    function ftGetFileInfo($cid, $cpw, $file) {
         if (!$this->runtime['selected']) {
             return $this->checkSelected();
         }
@@ -2397,7 +2397,7 @@ class TS3Admin {
      * @param		string	$path	filePath
      * @return     array	fileList
      */
-    function ftGetFileList($cid, $cpw = '', $path) {
+    function ftGetFileList($cid, $cpw, $path) {
         if (!$this->runtime['selected']) {
             return $this->checkSelected();
         }
@@ -2531,7 +2531,7 @@ class TS3Admin {
      * @param		string  $tcpw		targetChannelPassword [optional]
      * @return     boolean success
      */
-    function ftRenameFile($cid, $cpw = null, $oldname, $newname, $tcid = null, $tcpw = null) {
+    function ftRenameFile($cid, $cpw, $oldname, $newname, $tcid = null, $tcpw = null) {
         if (!$this->runtime['selected']) {
             return $this->checkSelected();
         }

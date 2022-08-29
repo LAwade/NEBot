@@ -14,6 +14,7 @@ interface ITSAdmin {
     /** TSADMIN */
     public function tsAdmin();
     public function isServerAdmin($clid);
+    public function isAdmin($clid, $data);
 
     /** MESSAGE */
     public function readChatMessage($type, $keepalive, $cid = -1, $tracert = null);

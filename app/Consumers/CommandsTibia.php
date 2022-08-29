@@ -93,11 +93,11 @@ class CommandsTibia
             $claimed->cldbid = $dbid;
 
             if ($claimed->save()) {
-                return $this->getData(true, 'O respawn foi criado, aguarde para atualizar a lista de climed!');
+                return $this->getData(true, 'O respawn foi criado, aguarde para atualizar a lista de claimed!');
             }
             return $this->getData(false, 'O respawn na cidade informada já está em uso!');
         } catch (Exception $e) {
-            return $this->getData(false, 'Não foi possível adicionar o claimed!');
+            return $this->getData(false, 'Não foi possível adicionar o claimed!' . $e->getMessage());
         }
     }
 

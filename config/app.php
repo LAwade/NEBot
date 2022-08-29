@@ -35,12 +35,12 @@ define('CONF_DATE_HOUR_APP', 'Y-m-d H:i:s');
 |--------------------------------------------------------------------------
 |
 */
-define('CONF_DB_DRIVER', 'pgsql');
-define('CONF_DB_HOST', '159.203.176.221');
-define('CONF_DB_PORT', '5432');
-define('CONF_DB_BASE', 'lendariosbot');
-define('CONF_DB_USER', 'lendarios');
-define('CONF_DB_PASSWD', 'Hunt3r@195');
+define('CONF_DB_DRIVER', getenv('CONF_DB_DRIVER'));
+define('CONF_DB_HOST', getenv('CONF_DB_HOST'));
+define('CONF_DB_PORT', getenv('CONF_DB_PORT'));
+define('CONF_DB_BASE', getenv('CONF_DB_BASE'));
+define('CONF_DB_USER', getenv('CONF_DB_USER'));
+define('CONF_DB_PASSWD', getenv('CONF_DB_PASSWD'));
 define('CONF_DB_OPTIONS', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,

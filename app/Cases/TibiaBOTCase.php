@@ -51,6 +51,7 @@ class TibiaBOTCase
         $this->tsAdmin = $tsAdmin;
         $this->mongodb = $mongodb;
         $this->message = $message;
+        //$this->mongodb = $mongodb->connection('admin', 'Hunt3r195', '152.67.45.241:27017', 'tibiabot', 'admin');
         $this->mongodb = $mongodb->connection(getenv('CONF_MONGODB_USER'), getenv('CONF_MONGODB_PASSWD'), getenv('CONF_MONGODB_HOST'), getenv('CONF_MONGODB_COLLECTIONS'), getenv('CONF_MONGODB_SOURCE'));
     }
 
@@ -71,7 +72,7 @@ class TibiaBOTCase
                 $connect = $this->tsAdmin->connect($sv->host, $sv->queryport, $sv->querylogin, $sv->querypassword);
                 $success = $this->tsAdmin->selectInstance($sv->port);
 
-                if (!$connect && !$success) {
+                if (!$connect || !$success) {
                     continue;
                 }
 
@@ -207,7 +208,7 @@ class TibiaBOTCase
         $allys = [];
         $ally = TibiaAllyList::where('fk_id_tibia', $this->tibia->id)->get();
 
-        if (!$ally['data']) {
+        if (!$ally) {
             return false;
         }
 
@@ -244,7 +245,7 @@ class TibiaBOTCase
         $enemys = [];
         $enemy = TibiaEnemyList::where('fk_id_tibia', $this->tibia->id)->get();
 
-        if (!$enemy['data']) {
+        if (!$enemy) {
             return false;
         }
 
@@ -279,8 +280,8 @@ class TibiaBOTCase
         $count = 0;
         $claimed = TibiaClaimedPlayer::where('fk_id_tibia', $this->tibia->id)->get();
 
-        if (!$claimed['data']) {
-            return false;
+        if(!$claimed){
+            return null;
         }
 
         $data = [];
@@ -349,14 +350,15 @@ class TibiaBOTCase
                 $death[] = $playerDeath;
             }
 
+            $lastDeath = [];
             if ($msg && strtotime($player['hours']) < strtotime($notify->deaths)) {
-                $lastDeath = $player['hours'];
+                $lastDeath[] = strtotime($player['hours']);
                 $this->news($msg);
                 $this->tsAdmin->tsAdmin()->sendMessage(3, 5, $msg);
             }
         }
-
-        $notify->deaths = date('Y-m-d H:i:s', strtotime($lastDeath));
+        sort($lastDeath);
+        $notify->deaths = date('Y-m-d H:i:s', strtotime($lastDeath[0]));
         $notify->save();
 
         $descDeath = $this->message->custom("Deaths List - {$total}/100 - Updated: " . date('d/m/Y H:i:s'), 'black');

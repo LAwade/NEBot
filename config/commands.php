@@ -13,22 +13,16 @@ return [
         'mtg' => 'TS',
         'rps' => 'TS',
         'cgadmin' => 'TS',
-        'rashid' => 'TIBIA',
         'servertibia' => 'TIBIA',
         'conftibia' => 'TIBIA',
         'channelslist' => 'TIBIA',
-        'addfriend' => 'TIBIA',
         'friends' => "TIBIA",
-        'rmfriend' => "TIBIA",
-        'addhunted' => 'TIBIA',
         'hunteds' => 'TIBIA',
-        'rmhunted' => 'TIBIA',
-        'addally' => 'TIBIA',
-        'rmally' => 'TIBIA',
-        'addenemy' => 'TIBIA',
-        'rmenemy' => 'TIBIA',
+        'ally' => 'TIBIA',
+        'enemy' => 'TIBIA',
         'claimed' => 'TIBIA',
         'rmclaimed' => 'TIBIA',
+        'rashid' => 'TIBIA',
     ],
     
     "translator" => [
@@ -50,19 +44,11 @@ return [
             'conftibia' => 'Registra o servidor de Tibia que será configurado no BOT.',
             'channelslist' => 'Cria/Atualiza as salas de Tibia.',
 
-            'addfriend' => 'Adiciona uma ou várias guilds a friend list. [Ex: !addfriend GUILD] ou [Ex: !addfriend GUILD1, GUILD2]',
-            'friends' => 'Apresenta todos os friends cadastrados!',
-            'rmfriend' => 'Remove um ou várias guilds a friend list. [Ex: !rmfriend GUILD] ou [Ex: !rmfriend GUILD1, GUILD2]',
+            'friends' => 'Adicionar/Remover/Listar da friends list! Adicionar: [Ex: !friends add GUILD,GUILD1] | Remover: [Ex: !friends rm GUILD,GUILD1] | Listar: [Ex: !friends]',
+            'hunteds' => 'Adicionar/Remover/Listar da hunteds list! Adicionar: [Ex: !hunteds add GUILD,GUILD1] | Remover: [Ex: !hunteds rm GUILD,GUILD1] | Listar: [Ex: !hunteds]',
+            'ally' => 'Adicionar/Remover players da ally list! Adicionar: [Ex: !ally add PLAYER,PLAYER1] | Remover: [Ex: !ally rm PLAYER,PLAYER1]',
+            'enemy' => 'Adicionar/Remover players da enemy list! Adicionar: [Ex: !enemy add PLAYER,PLAYER1] | Remover: [Ex: !enemy rm PLAYER,PLAYER1]',
 
-            'addhunted' => 'Adiciona uma várias guild a hunted list. [Ex: !addhunted GUILD] ou [Ex: !addhunted GUILD1, GUILD2]',
-            'hunteds' => 'Show all registered hunteds!',
-            'rmhunted' => 'Remove one or more guilds from the hunted list. [Ex: !rmhunted GUILD] or [Ex: !rmhunted GUILD1, GUILD2]',
-
-            'addally' => 'Adiciona um ou vários players a ally list. [Ex: !addally PLAYER] ou [Ex: !addfriend PLAYER1, PLAYER2]',
-            'rmally' => 'Remove um ou vários players da ally list. [Ex: !rmally PLAYER] or [Ex: !rmally PLAYER1, PLAYER2]',
-
-            'addenemy' => 'Adiciona uma vários player a enemy list. [Ex: !addenemy PLAYER] ou [Ex: !addfriend PLAYER1, PLAYER2]',
-            'rmenemy' => 'Remove um ou vários players da enemy list. [Ex: !rmenemy PLAYER] or [Ex: !rmenemy PLAYER1, PLAYER2]',
             'claimed' => 'Adiciona o player a um lista de respawn. [Ex: !claimed COD_CITY PLAYER]',
             'rmclaimed' => 'Remove o player a um lista de respawn. [Ex: !rmclaimed PLAYER]',
         ],
@@ -84,19 +70,11 @@ return [
             'conftibia' => 'Register the Tibia server that will be configured in the BOT.',
             'channelslist' => 'Create/Update channels Tibia.',
 
-            'addfriend' => 'Add one or mutiple guilds to a friend list. [Ex:! Addfriend GUILD] or [Ex:! Addfriend GUILD1, GUILD2]',
-            'friends' => 'Show all registered friends!',
-            'rmfriend' => 'Remove one or more guilds from the friend list. [Ex: !rmfriend GUILD] or [Ex: !rmfriend GUILD1, GUILD2]',
+            'friends' => 'Add/Remove/List friend list! Add: [Ex: !friends add GUILD,GUILD1] | Remove: [Ex: !friends rm GUILD,GUILD1] | List: [Ex: !friends]',
+            'hunteds' => 'Add/Remove/List hunteds list! Add: [Ex: !hunteds add GUILD,GUILD1] | Remove: [Ex: !hunteds rm GUILD,GUILD1] | List: [Ex: !hunteds]',
+            'ally' => 'Add/Remove player to the ally list! Add: [Ex: !ally add PLAYER1,PLAYER2] | Remove: [Ex: !ally rm PLAYER1,PLAYER2]',
+            'enemy' => 'Add/Remove player to the enemy list! Add: [Ex: !enemy add PLAYER1,PLAYER2] | Remove: [Ex: !enemy rm PLAYER1,PLAYER2]',
 
-            'addhunted' => 'Add one or mutiple guilds to hunted list. [Ex: !addhunted GUILD] or [Ex: !addhunted GUILD1, GUILD2]',
-            'hunteds' => 'Show all registered hunteds!',
-            'rmhunted' => 'Remove one or more guilds from the hunted list. [Ex: !rmhunted GUILD] or [Ex: !rmhunted GUILD1, GUILD2]',
-
-            'addally' => 'Adds a multiple player to the ally list. [Ex: !addally PLAYER] or [Ex: !addfriend PLAYER1, PLAYER2]',
-            'rmally' => 'Remove one or more allys from the ally list. [Ex: !rmally PLAYER] or [Ex: !rmally PLAYER1, PLAYER2]',
-
-            'addenemy' => 'Adds a multiple player to the enemy list. [Ex: !addenemy PLAYER] ou [Ex: !addfriend PLAYER1, PLAYER2]',
-            'rmenemy' => 'Remove one or more enemys from the enemy list. [Ex:!rmenemy PLAYER] or [Ex:!rmenemy PLAYER1, PLAYER2]',
             'claimed' => 'Add the player to a respawn list. [Ex: !claimed COD_CITY PLAYER]',
             'rmclaimed' => 'Remove the player to a respawn list. [Ex: !rmclaimed PLAYER]',
         ]

@@ -1,860 +1,152 @@
 ________________________________________________________________________________________
 
-[ 01/11/2021 01:58:47 ][ TibiaBOTCase ][ DEBUG ]
+[ 16/05/2022 19:04:14 ][ TibiaBotCase ][ ERROR ]
 
-> Array
-(
-    [0] => Illuminate\Database\Eloquent\Collection Object
-        (
-            [items:protected] => Array
-                (
-                    [0] => App\Models\Bot Object
-                        (
-                            [table:protected] => bots
-                            [connection:protected] => default
-                            [primaryKey:protected] => id
-                            [keyType:protected] => int
-                            [incrementing] => 1
-                            [with:protected] => Array
-                                (
-                                )
-
-                            [withCount:protected] => Array
-                                (
-                                )
-
-                            [preventsLazyLoading] => 
-                            [perPage:protected] => 15
-                            [exists] => 1
-                            [wasRecentlyCreated] => 
-                            [attributes:protected] => Array
-                                (
-                                    [id] => 1
-                                    [client_id] => 
-                                    [name] => SERVER LOCAL
-                                    [tag_command] => !
-                                    [level_tibia] => 250
-                                    [sgid_claimed] => 
-                                    [sgid_bot] => 
-                                    [limit_friend] => 2
-                                    [limit_hunted] => 2
-                                    [limit_ally] => 30
-                                    [limit_enemy] => 30
-                                    [external_id] => 
-                                    [active] => 1
-                                    [created_at] => 2021-08-30 03:46:32
-                                    [updated_at] => 2021-08-30 03:46:32
-                                    [world] => 
-                                    [fk_id_bot] => 1
-                                    [fk_id_tibia_api] => 8
-                                    [server] => Underwar
-                                    [src] => underwar
-                                    [url] => https://www.underwar.org
-                                    [premium] => 0
-                                    [fk_id_tibia_api_server] => 1
-                                    [host] => 159.203.191.88
-                                    [token] => 
-                                    [userapi] => 
-                                    [password] => 
-                                    [friend_high_channel] => 98
-                                    [friend_low_channel] => 99
-                                    [hunted_high_channel] => 100
-                                    [hunted_low_channel] => 101
-                                    [neutral_channel] => 102
-                                    [ally_channel] => 96
-                                    [enemy_channel] => 97
-                                    [death_channel] => 103
-                                    [claimed_channel] => 104
-                                    [news_channel] => 105
-                                    [fk_id_tibia] => 1
-                                    [port] => 9991
-                                    [querylogin] => serveradmin
-                                    [querypassword] => LTCAl7FIkfzI
-                                    [queryport] => 10101
-                                    [server_api_host] => 127.0.0.1
-                                )
-
-                            [original:protected] => Array
-                                (
-                                    [id] => 1
-                                    [client_id] => 
-                                    [name] => SERVER LOCAL
-                                    [tag_command] => !
-                                    [level_tibia] => 250
-                                    [sgid_claimed] => 
-                                    [sgid_bot] => 
-                                    [limit_friend] => 2
-                                    [limit_hunted] => 2
-                                    [limit_ally] => 30
-                                    [limit_enemy] => 30
-                                    [external_id] => 
-                                    [active] => 1
-                                    [created_at] => 2021-08-30 03:46:32
-                                    [updated_at] => 2021-08-30 03:46:32
-                                    [world] => 
-                                    [fk_id_bot] => 1
-                                    [fk_id_tibia_api] => 8
-                                    [server] => Underwar
-                                    [src] => underwar
-                                    [url] => https://www.underwar.org
-                                    [premium] => 0
-                                    [fk_id_tibia_api_server] => 1
-                                    [host] => 159.203.191.88
-                                    [token] => 
-                                    [userapi] => 
-                                    [password] => 
-                                    [friend_high_channel] => 98
-                                    [friend_low_channel] => 99
-                                    [hunted_high_channel] => 100
-                                    [hunted_low_channel] => 101
-                                    [neutral_channel] => 102
-                                    [ally_channel] => 96
-                                    [enemy_channel] => 97
-                                    [death_channel] => 103
-                                    [claimed_channel] => 104
-                                    [news_channel] => 105
-                                    [fk_id_tibia] => 1
-                                    [port] => 9991
-                                    [querylogin] => serveradmin
-                                    [querypassword] => LTCAl7FIkfzI
-                                    [queryport] => 10101
-                                    [server_api_host] => 127.0.0.1
-                                )
-
-                            [changes:protected] => Array
-                                (
-                                )
-
-                            [casts:protected] => Array
-                                (
-                                )
-
-                            [classCastCache:protected] => Array
-                                (
-                                )
-
-                            [dates:protected] => Array
-                                (
-                                )
-
-                            [dateFormat:protected] => 
-                            [appends:protected] => Array
-                                (
-                                )
-
-                            [dispatchesEvents:protected] => Array
-                                (
-                                )
-
-                            [observables:protected] => Array
-                                (
-                                )
-
-                            [relations:protected] => Array
-                                (
-                                )
-
-                            [touches:protected] => Array
-                                (
-                                )
-
-                            [timestamps] => 1
-                            [hidden:protected] => Array
-                                (
-                                )
-
-                            [visible:protected] => Array
-                                (
-                                )
-
-                            [fillable:protected] => Array
-                                (
-                                )
-
-                            [guarded:protected] => Array
-                                (
-                                    [0] => *
-                                )
-
-                        )
-
-                )
-
-            [escapeWhenCastingToString:protected] => 
-        )
-
-    [1] => App\Shared\TS3Admin Object
-        (
-            [runtime:App\Shared\TS3Admin:private] => Array
-                (
-                    [socket] => Resource id #148
-                    [selected] => 1
-                    [host] => 159.203.191.88
-                    [queryport] => 10101
-                    [timeout] => 2
-                    [debug] => Array
-                        (
-                        )
-
-                    [fileSocket] => 
-                    [bot_clid] => BOT
-                    [bot_name] => BOT Lendário
-                )
-
-            [data:App\Shared\TS3Admin:private] => Array
-                (
-                )
-
-        )
-
-    [2] => 1
-)
-
+> Property [id] does not exist on this collection instance.
 
  ---------------------------------- [ FINISH LOGGER ] ----------------------------------
 
 ________________________________________________________________________________________
 
-[ 01/11/2021 01:59:10 ][ TibiaBOTCase ][ DEBUG ]
+[ 16/05/2022 19:04:47 ][ TibiaBotCase ][ ERROR ]
 
-> Array
-(
-    [0] => Illuminate\Database\Eloquent\Collection Object
-        (
-            [items:protected] => Array
-                (
-                    [0] => App\Models\Bot Object
-                        (
-                            [table:protected] => bots
-                            [connection:protected] => default
-                            [primaryKey:protected] => id
-                            [keyType:protected] => int
-                            [incrementing] => 1
-                            [with:protected] => Array
-                                (
-                                )
-
-                            [withCount:protected] => Array
-                                (
-                                )
-
-                            [preventsLazyLoading] => 
-                            [perPage:protected] => 15
-                            [exists] => 1
-                            [wasRecentlyCreated] => 
-                            [attributes:protected] => Array
-                                (
-                                    [id] => 1
-                                    [client_id] => 
-                                    [name] => SERVER LOCAL
-                                    [tag_command] => !
-                                    [level_tibia] => 250
-                                    [sgid_claimed] => 
-                                    [sgid_bot] => 
-                                    [limit_friend] => 2
-                                    [limit_hunted] => 2
-                                    [limit_ally] => 30
-                                    [limit_enemy] => 30
-                                    [external_id] => 
-                                    [active] => 1
-                                    [created_at] => 2021-08-30 03:46:32
-                                    [updated_at] => 2021-08-30 03:46:32
-                                    [world] => 
-                                    [fk_id_bot] => 1
-                                    [fk_id_tibia_api] => 8
-                                    [server] => Underwar
-                                    [src] => underwar
-                                    [url] => https://www.underwar.org
-                                    [premium] => 0
-                                    [fk_id_tibia_api_server] => 1
-                                    [host] => 159.203.191.88
-                                    [token] => 
-                                    [userapi] => 
-                                    [password] => 
-                                    [friend_high_channel] => 98
-                                    [friend_low_channel] => 99
-                                    [hunted_high_channel] => 100
-                                    [hunted_low_channel] => 101
-                                    [neutral_channel] => 102
-                                    [ally_channel] => 96
-                                    [enemy_channel] => 97
-                                    [death_channel] => 103
-                                    [claimed_channel] => 104
-                                    [news_channel] => 105
-                                    [fk_id_tibia] => 1
-                                    [port] => 9991
-                                    [querylogin] => serveradmin
-                                    [querypassword] => LTCAl7FIkfzI
-                                    [queryport] => 10101
-                                    [server_api_host] => 127.0.0.1
-                                )
-
-                            [original:protected] => Array
-                                (
-                                    [id] => 1
-                                    [client_id] => 
-                                    [name] => SERVER LOCAL
-                                    [tag_command] => !
-                                    [level_tibia] => 250
-                                    [sgid_claimed] => 
-                                    [sgid_bot] => 
-                                    [limit_friend] => 2
-                                    [limit_hunted] => 2
-                                    [limit_ally] => 30
-                                    [limit_enemy] => 30
-                                    [external_id] => 
-                                    [active] => 1
-                                    [created_at] => 2021-08-30 03:46:32
-                                    [updated_at] => 2021-08-30 03:46:32
-                                    [world] => 
-                                    [fk_id_bot] => 1
-                                    [fk_id_tibia_api] => 8
-                                    [server] => Underwar
-                                    [src] => underwar
-                                    [url] => https://www.underwar.org
-                                    [premium] => 0
-                                    [fk_id_tibia_api_server] => 1
-                                    [host] => 159.203.191.88
-                                    [token] => 
-                                    [userapi] => 
-                                    [password] => 
-                                    [friend_high_channel] => 98
-                                    [friend_low_channel] => 99
-                                    [hunted_high_channel] => 100
-                                    [hunted_low_channel] => 101
-                                    [neutral_channel] => 102
-                                    [ally_channel] => 96
-                                    [enemy_channel] => 97
-                                    [death_channel] => 103
-                                    [claimed_channel] => 104
-                                    [news_channel] => 105
-                                    [fk_id_tibia] => 1
-                                    [port] => 9991
-                                    [querylogin] => serveradmin
-                                    [querypassword] => LTCAl7FIkfzI
-                                    [queryport] => 10101
-                                    [server_api_host] => 127.0.0.1
-                                )
-
-                            [changes:protected] => Array
-                                (
-                                )
-
-                            [casts:protected] => Array
-                                (
-                                )
-
-                            [classCastCache:protected] => Array
-                                (
-                                )
-
-                            [dates:protected] => Array
-                                (
-                                )
-
-                            [dateFormat:protected] => 
-                            [appends:protected] => Array
-                                (
-                                )
-
-                            [dispatchesEvents:protected] => Array
-                                (
-                                )
-
-                            [observables:protected] => Array
-                                (
-                                )
-
-                            [relations:protected] => Array
-                                (
-                                )
-
-                            [touches:protected] => Array
-                                (
-                                )
-
-                            [timestamps] => 1
-                            [hidden:protected] => Array
-                                (
-                                )
-
-                            [visible:protected] => Array
-                                (
-                                )
-
-                            [fillable:protected] => Array
-                                (
-                                )
-
-                            [guarded:protected] => Array
-                                (
-                                    [0] => *
-                                )
-
-                        )
-
-                )
-
-            [escapeWhenCastingToString:protected] => 
-        )
-
-    [1] => App\Shared\TS3Admin Object
-        (
-            [runtime:App\Shared\TS3Admin:private] => Array
-                (
-                    [socket] => Resource id #151
-                    [selected] => 1
-                    [host] => 159.203.191.88
-                    [queryport] => 10101
-                    [timeout] => 2
-                    [debug] => Array
-                        (
-                        )
-
-                    [fileSocket] => 
-                    [bot_clid] => BOT
-                    [bot_name] => BOT Lendário
-                )
-
-            [data:App\Shared\TS3Admin:private] => Array
-                (
-                )
-
-        )
-
-    [2] => 1
-)
-
+> Property [id] does not exist on this collection instance.
 
  ---------------------------------- [ FINISH LOGGER ] ----------------------------------
 
 ________________________________________________________________________________________
 
-[ 01/11/2021 02:09:27 ][ TibiaBOTCase ][ DEBUG ]
+[ 16/05/2022 19:05:16 ][ TibiaBotCase ][ ERROR ]
 
-> Array
-(
-    [0] => Illuminate\Database\Eloquent\Collection Object
-        (
-            [items:protected] => Array
-                (
-                    [0] => App\Models\Bot Object
-                        (
-                            [table:protected] => bots
-                            [connection:protected] => default
-                            [primaryKey:protected] => id
-                            [keyType:protected] => int
-                            [incrementing] => 1
-                            [with:protected] => Array
-                                (
-                                )
-
-                            [withCount:protected] => Array
-                                (
-                                )
-
-                            [preventsLazyLoading] => 
-                            [perPage:protected] => 15
-                            [exists] => 1
-                            [wasRecentlyCreated] => 
-                            [attributes:protected] => Array
-                                (
-                                    [id] => 1
-                                    [client_id] => 
-                                    [name] => SERVER LOCAL
-                                    [tag_command] => !
-                                    [level_tibia] => 250
-                                    [sgid_claimed] => 
-                                    [sgid_bot] => 
-                                    [limit_friend] => 2
-                                    [limit_hunted] => 2
-                                    [limit_ally] => 30
-                                    [limit_enemy] => 30
-                                    [external_id] => 
-                                    [active] => 1
-                                    [created_at] => 2021-08-30 03:46:32
-                                    [updated_at] => 2021-08-30 03:46:32
-                                    [world] => 
-                                    [fk_id_bot] => 1
-                                    [fk_id_tibia_api] => 8
-                                    [server] => Underwar
-                                    [src] => underwar
-                                    [url] => https://www.underwar.org
-                                    [premium] => 0
-                                    [fk_id_tibia_api_server] => 1
-                                    [host] => 159.203.191.88
-                                    [token] => 
-                                    [userapi] => 
-                                    [password] => 
-                                    [friend_high_channel] => 98
-                                    [friend_low_channel] => 99
-                                    [hunted_high_channel] => 100
-                                    [hunted_low_channel] => 101
-                                    [neutral_channel] => 102
-                                    [ally_channel] => 96
-                                    [enemy_channel] => 97
-                                    [death_channel] => 103
-                                    [claimed_channel] => 104
-                                    [news_channel] => 105
-                                    [fk_id_tibia] => 1
-                                    [port] => 9991
-                                    [querylogin] => serveradmin
-                                    [querypassword] => LTCAl7FIkfzI
-                                    [queryport] => 10101
-                                    [server_api_host] => 127.0.0.1
-                                )
-
-                            [original:protected] => Array
-                                (
-                                    [id] => 1
-                                    [client_id] => 
-                                    [name] => SERVER LOCAL
-                                    [tag_command] => !
-                                    [level_tibia] => 250
-                                    [sgid_claimed] => 
-                                    [sgid_bot] => 
-                                    [limit_friend] => 2
-                                    [limit_hunted] => 2
-                                    [limit_ally] => 30
-                                    [limit_enemy] => 30
-                                    [external_id] => 
-                                    [active] => 1
-                                    [created_at] => 2021-08-30 03:46:32
-                                    [updated_at] => 2021-08-30 03:46:32
-                                    [world] => 
-                                    [fk_id_bot] => 1
-                                    [fk_id_tibia_api] => 8
-                                    [server] => Underwar
-                                    [src] => underwar
-                                    [url] => https://www.underwar.org
-                                    [premium] => 0
-                                    [fk_id_tibia_api_server] => 1
-                                    [host] => 159.203.191.88
-                                    [token] => 
-                                    [userapi] => 
-                                    [password] => 
-                                    [friend_high_channel] => 98
-                                    [friend_low_channel] => 99
-                                    [hunted_high_channel] => 100
-                                    [hunted_low_channel] => 101
-                                    [neutral_channel] => 102
-                                    [ally_channel] => 96
-                                    [enemy_channel] => 97
-                                    [death_channel] => 103
-                                    [claimed_channel] => 104
-                                    [news_channel] => 105
-                                    [fk_id_tibia] => 1
-                                    [port] => 9991
-                                    [querylogin] => serveradmin
-                                    [querypassword] => LTCAl7FIkfzI
-                                    [queryport] => 10101
-                                    [server_api_host] => 127.0.0.1
-                                )
-
-                            [changes:protected] => Array
-                                (
-                                )
-
-                            [casts:protected] => Array
-                                (
-                                )
-
-                            [classCastCache:protected] => Array
-                                (
-                                )
-
-                            [dates:protected] => Array
-                                (
-                                )
-
-                            [dateFormat:protected] => 
-                            [appends:protected] => Array
-                                (
-                                )
-
-                            [dispatchesEvents:protected] => Array
-                                (
-                                )
-
-                            [observables:protected] => Array
-                                (
-                                )
-
-                            [relations:protected] => Array
-                                (
-                                )
-
-                            [touches:protected] => Array
-                                (
-                                )
-
-                            [timestamps] => 1
-                            [hidden:protected] => Array
-                                (
-                                )
-
-                            [visible:protected] => Array
-                                (
-                                )
-
-                            [fillable:protected] => Array
-                                (
-                                )
-
-                            [guarded:protected] => Array
-                                (
-                                    [0] => *
-                                )
-
-                        )
-
-                )
-
-            [escapeWhenCastingToString:protected] => 
-        )
-
-    [1] => App\Shared\TS3Admin Object
-        (
-            [runtime:App\Shared\TS3Admin:private] => Array
-                (
-                    [socket] => Resource id #103
-                    [selected] => 1
-                    [host] => 159.203.191.88
-                    [queryport] => 10101
-                    [timeout] => 2
-                    [debug] => Array
-                        (
-                        )
-
-                    [fileSocket] => 
-                    [bot_clid] => BOT
-                    [bot_name] => BOT Lendário
-                )
-
-            [data:App\Shared\TS3Admin:private] => Array
-                (
-                )
-
-        )
-
-    [2] => 1
-)
-
+> Property [id] does not exist on this collection instance.
 
  ---------------------------------- [ FINISH LOGGER ] ----------------------------------
 
 ________________________________________________________________________________________
 
-[ 01/11/2021 02:10:07 ][ TibiaBOTCase ][ DEBUG ]
+[ 16/05/2022 19:05:49 ][ TibiaBotCase ][ ERROR ]
 
-> Array
-(
-    [0] => Illuminate\Database\Eloquent\Collection Object
-        (
-            [items:protected] => Array
-                (
-                    [0] => App\Models\Bot Object
-                        (
-                            [table:protected] => bots
-                            [connection:protected] => default
-                            [primaryKey:protected] => id
-                            [keyType:protected] => int
-                            [incrementing] => 1
-                            [with:protected] => Array
-                                (
-                                )
+> Property [id] does not exist on this collection instance.
 
-                            [withCount:protected] => Array
-                                (
-                                )
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
 
-                            [preventsLazyLoading] => 
-                            [perPage:protected] => 15
-                            [exists] => 1
-                            [wasRecentlyCreated] => 
-                            [attributes:protected] => Array
-                                (
-                                    [id] => 1
-                                    [client_id] => 
-                                    [name] => SERVER LOCAL
-                                    [tag_command] => !
-                                    [level_tibia] => 250
-                                    [sgid_claimed] => 
-                                    [sgid_bot] => 
-                                    [limit_friend] => 2
-                                    [limit_hunted] => 2
-                                    [limit_ally] => 30
-                                    [limit_enemy] => 30
-                                    [external_id] => 
-                                    [active] => 1
-                                    [created_at] => 2021-08-30 03:46:32
-                                    [updated_at] => 2021-08-30 03:46:32
-                                    [world] => 
-                                    [fk_id_bot] => 1
-                                    [fk_id_tibia_api] => 8
-                                    [server] => Underwar
-                                    [src] => underwar
-                                    [url] => https://www.underwar.org
-                                    [premium] => 0
-                                    [fk_id_tibia_api_server] => 1
-                                    [host] => 159.203.191.88
-                                    [token] => 
-                                    [userapi] => 
-                                    [password] => 
-                                    [friend_high_channel] => 98
-                                    [friend_low_channel] => 99
-                                    [hunted_high_channel] => 100
-                                    [hunted_low_channel] => 101
-                                    [neutral_channel] => 102
-                                    [ally_channel] => 96
-                                    [enemy_channel] => 97
-                                    [death_channel] => 103
-                                    [claimed_channel] => 104
-                                    [news_channel] => 105
-                                    [fk_id_tibia] => 1
-                                    [port] => 9991
-                                    [querylogin] => serveradmin
-                                    [querypassword] => LTCAl7FIkfzI
-                                    [queryport] => 10101
-                                    [server_api_host] => 127.0.0.1
-                                )
+________________________________________________________________________________________
 
-                            [original:protected] => Array
-                                (
-                                    [id] => 1
-                                    [client_id] => 
-                                    [name] => SERVER LOCAL
-                                    [tag_command] => !
-                                    [level_tibia] => 250
-                                    [sgid_claimed] => 
-                                    [sgid_bot] => 
-                                    [limit_friend] => 2
-                                    [limit_hunted] => 2
-                                    [limit_ally] => 30
-                                    [limit_enemy] => 30
-                                    [external_id] => 
-                                    [active] => 1
-                                    [created_at] => 2021-08-30 03:46:32
-                                    [updated_at] => 2021-08-30 03:46:32
-                                    [world] => 
-                                    [fk_id_bot] => 1
-                                    [fk_id_tibia_api] => 8
-                                    [server] => Underwar
-                                    [src] => underwar
-                                    [url] => https://www.underwar.org
-                                    [premium] => 0
-                                    [fk_id_tibia_api_server] => 1
-                                    [host] => 159.203.191.88
-                                    [token] => 
-                                    [userapi] => 
-                                    [password] => 
-                                    [friend_high_channel] => 98
-                                    [friend_low_channel] => 99
-                                    [hunted_high_channel] => 100
-                                    [hunted_low_channel] => 101
-                                    [neutral_channel] => 102
-                                    [ally_channel] => 96
-                                    [enemy_channel] => 97
-                                    [death_channel] => 103
-                                    [claimed_channel] => 104
-                                    [news_channel] => 105
-                                    [fk_id_tibia] => 1
-                                    [port] => 9991
-                                    [querylogin] => serveradmin
-                                    [querypassword] => LTCAl7FIkfzI
-                                    [queryport] => 10101
-                                    [server_api_host] => 127.0.0.1
-                                )
+[ 16/05/2022 19:06:23 ][ TibiaBotCase ][ ERROR ]
 
-                            [changes:protected] => Array
-                                (
-                                )
+> Property [id] does not exist on this collection instance.
 
-                            [casts:protected] => Array
-                                (
-                                )
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
 
-                            [classCastCache:protected] => Array
-                                (
-                                )
+________________________________________________________________________________________
 
-                            [dates:protected] => Array
-                                (
-                                )
+[ 16/05/2022 19:06:54 ][ TibiaBotCase ][ ERROR ]
 
-                            [dateFormat:protected] => 
-                            [appends:protected] => Array
-                                (
-                                )
+> Property [id] does not exist on this collection instance.
 
-                            [dispatchesEvents:protected] => Array
-                                (
-                                )
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
 
-                            [observables:protected] => Array
-                                (
-                                )
+________________________________________________________________________________________
 
-                            [relations:protected] => Array
-                                (
-                                )
+[ 16/05/2022 19:07:28 ][ TibiaBotCase ][ ERROR ]
 
-                            [touches:protected] => Array
-                                (
-                                )
+> Property [id] does not exist on this collection instance.
 
-                            [timestamps] => 1
-                            [hidden:protected] => Array
-                                (
-                                )
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
 
-                            [visible:protected] => Array
-                                (
-                                )
+________________________________________________________________________________________
 
-                            [fillable:protected] => Array
-                                (
-                                )
+[ 16/05/2022 19:08:05 ][ TibiaBotCase ][ ERROR ]
 
-                            [guarded:protected] => Array
-                                (
-                                    [0] => *
-                                )
+> Property [id] does not exist on this collection instance.
 
-                        )
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
 
-                )
+________________________________________________________________________________________
 
-            [escapeWhenCastingToString:protected] => 
-        )
+[ 16/05/2022 19:08:37 ][ TibiaBotCase ][ ERROR ]
 
-    [1] => App\Shared\TS3Admin Object
-        (
-            [runtime:App\Shared\TS3Admin:private] => Array
-                (
-                    [socket] => Resource id #103
-                    [selected] => 1
-                    [host] => 159.203.191.88
-                    [queryport] => 10101
-                    [timeout] => 2
-                    [debug] => Array
-                        (
-                        )
+> Property [id] does not exist on this collection instance.
 
-                    [fileSocket] => 
-                    [bot_clid] => BOT
-                    [bot_name] => BOT Lendário
-                )
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
 
-            [data:App\Shared\TS3Admin:private] => Array
-                (
-                )
+________________________________________________________________________________________
 
-        )
+[ 16/05/2022 19:09:08 ][ TibiaBotCase ][ ERROR ]
 
-    [2] => 1
-)
+> Property [id] does not exist on this collection instance.
 
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
+
+________________________________________________________________________________________
+
+[ 16/05/2022 19:09:37 ][ TibiaBotCase ][ ERROR ]
+
+> Property [id] does not exist on this collection instance.
+
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
+
+________________________________________________________________________________________
+
+[ 16/05/2022 19:10:08 ][ TibiaBotCase ][ ERROR ]
+
+> Property [id] does not exist on this collection instance.
+
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
+
+________________________________________________________________________________________
+
+[ 16/05/2022 19:10:41 ][ TibiaBotCase ][ ERROR ]
+
+> Property [id] does not exist on this collection instance.
+
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
+
+________________________________________________________________________________________
+
+[ 16/05/2022 19:11:10 ][ TibiaBotCase ][ ERROR ]
+
+> Property [id] does not exist on this collection instance.
+
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
+
+________________________________________________________________________________________
+
+[ 16/05/2022 19:11:39 ][ TibiaBotCase ][ ERROR ]
+
+> Property [id] does not exist on this collection instance.
+
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
+
+________________________________________________________________________________________
+
+[ 16/05/2022 19:12:08 ][ TibiaBotCase ][ ERROR ]
+
+> Property [id] does not exist on this collection instance.
+
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
+
+________________________________________________________________________________________
+
+[ 16/05/2022 19:12:37 ][ TibiaBotCase ][ ERROR ]
+
+> Property [id] does not exist on this collection instance.
+
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
+
+________________________________________________________________________________________
+
+[ 16/05/2022 19:13:07 ][ TibiaBotCase ][ ERROR ]
+
+> Property [id] does not exist on this collection instance.
+
+ ---------------------------------- [ FINISH LOGGER ] ----------------------------------
+
+________________________________________________________________________________________
+
+[ 16/05/2022 19:13:41 ][ TibiaBotCase ][ ERROR ]
+
+> Property [id] does not exist on this collection instance.
 
  ---------------------------------- [ FINISH LOGGER ] ----------------------------------
 

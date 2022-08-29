@@ -21,7 +21,7 @@ class CommandTSProvider extends CommandsTibia implements ICommand
             $display .= $message->info($data['bot']['tag'] . $key) .  $message->custom(" [$cmd]", '#DEDEDE') . " → " . $message->alert(sprintf($translator[$lang][$key], $data['bot']['tag'])) . "\n";
             $display .= $message->separetor();
         }
-        $tsAdmin->tsAdmin()->sendMessage(3, 5, $display);
+        $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $display);
     }
 
     /** MASS POKE */
@@ -41,7 +41,7 @@ class CommandTSProvider extends CommandsTibia implements ICommand
         $channel = $tsAdmin->tsAdmin()->channelFind($data['commands'][1]);
 
         if (!$channel['data'][0]['cid']) {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("A sala não foi encontrada!"));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error("A sala não foi encontrada!"));
         }
 
         foreach ($clientes['data'] as $online) {
@@ -58,7 +58,7 @@ class CommandTSProvider extends CommandsTibia implements ICommand
         $channel = $tsAdmin->tsAdmin()->channelFind($data['commands'][1]);
 
         if (!$channel['data'][0]['cid']) {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("A sala não foi encontrada!"));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error("A sala não foi encontrada!"));
         }
 
         foreach ($clientes['data'] as $online) {
@@ -123,7 +123,7 @@ class CommandTSProvider extends CommandsTibia implements ICommand
 
         $channel = $tsAdmin->tsAdmin()->channelFind($data['commands'][1]);
         if (!$channel['data'][0]['cid']) {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("A sala não foi encontrada!"));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error("A sala não foi encontrada!"));
             return null;
         }
 
@@ -134,9 +134,9 @@ class CommandTSProvider extends CommandsTibia implements ICommand
                     $tsAdmin->tsAdmin()->clientMove($online['clid'], $channel['data'][0]['cid']);
                 }
             }
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success("Comando executado!"));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->success("Comando executado!"));
         } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("O Grupo não foi encontrado!"));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error("O Grupo não foi encontrado!"));
         }
     }
 
@@ -165,9 +165,9 @@ class CommandTSProvider extends CommandsTibia implements ICommand
                     $tsAdmin->tsAdmin()->clientMove($online['clid'], $client['data']['cid']);
                 }
             }
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success("Comando executado!"));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->success("Comando executado!"));
         } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("O Grupo não foi encontrado!"));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error("O Grupo não foi encontrado!"));
         }
     }
 
@@ -184,7 +184,7 @@ class CommandTSProvider extends CommandsTibia implements ICommand
             $tsAdmin->tsAdmin()->clientDelPerm($value['client_database_id'], $permissions);
         }
 
-        $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success("Priority Speaker removidos!"));
+        $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->success("Priority Speaker removidos!"));
     }
 
     /** CREATE GRUOP ADMIN */
@@ -193,7 +193,7 @@ class CommandTSProvider extends CommandsTibia implements ICommand
 
         $isSA = $tsAdmin->isServerAdmin($data['invoker']['id']);
         if (!$isSA['success']) {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error(sprintf("Permissões de cliente insuficientes! (Verificar em %s)", implode(', ', $isSA['permissions']))));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error(sprintf("Permissões de cliente insuficientes! (Verificar em %s)", implode(', ', $isSA['permissions']))));
             return;
         }
 
@@ -209,7 +209,7 @@ class CommandTSProvider extends CommandsTibia implements ICommand
         foreach ($exgrp['data'] as $v) {
             if (in_array($v['name'], $groups)) {
                 $tsAdmin->tsAdmin()->serverGroupDelete($v['sgid'], 1);
-                $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->alert("O grupo {$v['name']} foi removido!"));
+                $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->alert("O grupo {$v['name']} foi removido!"));
             }
         }
 
@@ -217,7 +217,7 @@ class CommandTSProvider extends CommandsTibia implements ICommand
             $grp = $tsAdmin->tsAdmin()->serverGroupAdd($val, 1);
             $gdata = $tsAdmin->tsAdmin()->serverGroupAddPerm($grp['data']['sgid'], $permissions);
             if ($gdata['errors']) {
-                $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("Não foi possível criar o Grupo {$val}, por favor crie manualmente adicionando a permissão de escrita na sala do servidor!"));
+                $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error("Não foi possível criar o Grupo {$val}, por favor crie manualmente adicionando a permissão de escrita na sala do servidor!"));
             } else {
                 $grpadd = $tsAdmin->tsAdmin()->serverGroupList();
                 foreach ($grpadd['data'] as $cg) {
@@ -225,7 +225,7 @@ class CommandTSProvider extends CommandsTibia implements ICommand
                         $grpsuccess[$k] = $cg['sgid'];
                     }
                 }
-                $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success("O grupo {$val} foi criado com sucesso!"));
+                $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->success("O grupo {$val} foi criado com sucesso!"));
             }
         }
         if ($grpsuccess) {
@@ -233,7 +233,7 @@ class CommandTSProvider extends CommandsTibia implements ICommand
             $bot->sgid_bot = $grpsuccess['sgid_bot'];
             $bot->sgid_claimed = $grpsuccess['sgid_claimed'];
             $bot->save();
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success("Grupos foram cadastrados com sucesso!"));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->success("Grupos foram cadastrados com sucesso!"));
         }
     }
 
@@ -244,7 +244,7 @@ class CommandTSProvider extends CommandsTibia implements ICommand
     public function rashid($tsAdmin, $message, $data)
     {
         $reponse = $this->findrashid();
-        $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->custom("Rashid está em {$reponse['data']} [Timezone CEST]\n", '#8946FF'));
+        $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->custom("Rashid está em {$reponse['data']} [Timezone CEST]\n", '#8946FF'));
     }
 
     public function servertibia($tsAdmin, $message, $data)
@@ -255,7 +255,7 @@ class CommandTSProvider extends CommandsTibia implements ICommand
             foreach ($result['data'] as $tibia) {
                 $servidores .= $message->custom("ID: {$tibia->id} → {$tibia->server} \n", '#8946FF');
             }
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $servidores);
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $servidores);
         }
     }
 
@@ -265,13 +265,13 @@ class CommandTSProvider extends CommandsTibia implements ICommand
             $world = isset($data['commands'][2]) ? $data['commands'][2] : null;
             $response = $this->configTibia($data['bot']['id'], $data['commands'][1], $world);
         } else {
-            return $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("É necessário informar o código do servidor!"));
+            return $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error("É necessário informar o código do servidor!"));
         }
 
         if ($response['success']) {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success($response['message']));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->success($response['message']));
         } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error($response['message']));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error($response['message']));
         }
     }
 
@@ -308,166 +308,135 @@ class CommandTSProvider extends CommandsTibia implements ICommand
 
         $response = $this->tibiachannels($data['bot']['id'], $channels, $data['commands'][1]);
         if ($response['success'] && !$errors) {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success($response['message']));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->success($response['message']));
         } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error($response['message'] . " Errors[" . count($errors) . "]: " . $errors[0]));
-        }
-    }
-
-    public function addfriend($tsAdmin, $message, $data)
-    {
-        if ($data['commands'][1]) {
-            $response = $this->addNewFriend($data['bot']['id'], trim(str_replace($data['commands'][0], '', $data['msg'])));
-            if ($response['success']) {
-                foreach ($response['data'] as $guild) {
-                    $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success($response['message'] . " " . trim($guild['guild'])));
-                }
-            } else {
-                $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error($response['message']));
-            }
-        } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("Informe nome de uma guild para cadastrar!"));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error($response['message'] . " Errors[" . count($errors) . "]: " . $errors[0]));
         }
     }
 
     public function friends($tsAdmin, $message, $data)
     {
+        if ($data['commands'][1]) {
+            $tags = ['add', 'rm'];
+            $cmdts = strtolower($data['commands'][1]);
+
+            if (in_array($cmdts, $tags)) {
+                if ($cmdts == 'add') {
+                    $response = $this->addNewFriend($data['bot']['id'], trim(str_replace("{$data['commands'][0]} {$cmdts}", '', $data['msg'])));
+                } else {
+                    $response = $this->removeFriend($data['bot']['id'], trim(str_replace("{$data['commands'][0]} {$cmdts}", '', $data['msg'])));
+                }
+
+                if ($response['success']) {
+                    foreach ($response['data'] as $guild) {
+                        $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->success($response['message'] . " " . trim($guild['guild'])));
+                    }
+                } else {
+                    $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error($response['message']));
+                }
+                return;
+            }
+        }
+
         $response = $this->listfriend($data['bot']['id']);
         if ($response['data']) {
             $friends = "\n";
             foreach ($response['data'] as $key => $value) {
                 $friends .= "ID: {$key}  →  {$value} \n";
             }
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->custom($friends, '#8946FF'));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->custom($friends, '#8946FF'));
         } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("Não foram encontrados nenhum friend!"));
-        }
-    }
-
-    public function rmfriend($tsAdmin, $message, $data)
-    {
-        if ($data['commands'][1]) {
-            $response = $this->removeFriend($data['bot']['id'], trim(str_replace($data['commands'][0], '', $data['msg'])));
-            if ($response['success']) {
-                foreach ($response['data'] as $guild) {
-                    $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success($response['message'] . " " . trim($guild['guild'])));
-                }
-            } else {
-                $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error($response['message']));
-            }
-        } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("Informe nome de uma guild para remover!"));
-        }
-    }
-
-    public function addhunted($tsAdmin, $message, $data)
-    {
-        if ($data['commands'][1]) {
-            $response = $this->addNewHunted($data['bot']['id'], trim(str_replace($data['commands'][0], '', $data['msg'])));
-            if ($response['success']) {
-                foreach ($response['data'] as $guild) {
-                    $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success($response['message'] . " " . trim($guild['guild'])));
-                }
-            } else {
-                $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error($response['message']));
-            }
-        } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("Informe nome de uma guild para cadastrar!"));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error("Não foram encontrados nenhum friend!"));
         }
     }
 
     public function hunteds($tsAdmin, $message, $data)
     {
+        if (isset($data['commands'][1])) {
+            $tags = ['add', 'rm'];
+            $cmdts = strtolower($data['commands'][1]);
+
+            if (in_array($cmdts, $tags)) {
+                if ($cmdts == 'add') {
+                    $response = $this->addNewHunted($data['bot']['id'], trim(str_replace("{$data['commands'][0]} {$cmdts}", '', $data['msg'])));
+                } else {
+                    $response = $this->removeHunted($data['bot']['id'], trim(str_replace("{$data['commands'][0]} {$cmdts}", '', $data['msg'])));
+                }
+
+                if ($response['success']) {
+                    foreach ($response['data'] as $guild) {
+                        $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->success($response['message'] . " " . trim($guild['guild'])));
+                    }
+                } else {
+                    $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error($response['message']));
+                }
+                return;
+            }
+        }
+
         $response = $this->listHunted($data['bot']['id']);
-        if ($response['data']) {
+        if (isset($response['data'])) {
             $hunteds = "\n";
             foreach ($response['data'] as $key => $value) {
                 $hunteds .= "ID: {$key}  →  {$value} \n";
             }
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->custom($hunteds, '#8946FF'));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->custom($hunteds, '#8946FF'));
         } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("Não foram encontrados nenhum hunted!"));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error("Não foram encontrados nenhum hunted!"));
         }
     }
 
-    public function rmhunted($tsAdmin, $message, $data)
+    public function ally($tsAdmin, $message, $data)
     {
+
         if ($data['commands'][1]) {
-            $response = $this->removeHunted($data['bot']['id'], trim(str_replace($data['commands'][0], '', $data['msg'])));
-            if ($response['success']) {
-                foreach ($response['data'] as $guild) {
-                    $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success($response['message'] . " " . trim($guild['guild'])));
+            $tags = ['add', 'rm'];
+            $cmdts = strtolower($data['commands'][1]);
+
+            if (in_array($cmdts, $tags)) {
+                if ($cmdts == 'add') {
+                    $response = $this->addNewAlly($data['bot']['id'], trim(str_replace("{$data['commands'][0]} {$cmdts}", '', $data['msg'])));
+                } else {
+                    $response = $this->removeAlly($data['bot']['id'], trim(str_replace("{$data['commands'][0]} {$cmdts}", '', $data['msg'])));
                 }
-            } else {
-                $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error($response['message']));
+
+                if ($response['success']) {
+                    foreach ($response['data'] as $guild) {
+                        $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->success($response['message'] . " " . trim($guild['guild'])));
+                    }
+                } else {
+                    $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error($response['message']));
+                }
+                return;
             }
-        } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("Informe nome de uma guild para remover!"));
-        }
+
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error("Informe nome de um player para adicionar ou remover!"));
+        }       
     }
 
-    public function addally($tsAdmin, $message, $data)
+    public function enemy($tsAdmin, $message, $data)
     {
         if ($data['commands'][1]) {
-            $response = $this->addNewAlly($data['bot']['id'], trim(str_replace($data['commands'][0], '', $data['msg'])));
-            if ($response['success']) {
-                foreach ($response['data'] as $guild) {
-                    $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success($response['message'] . " " . trim($guild['player'])));
+            $tags = ['add', 'rm'];
+            $cmdts = strtolower($data['commands'][1]);
+            if (in_array($cmdts, $tags)) {
+                if ($cmdts == 'add') {
+                    $response = $this->addNewEnemy($data['bot']['id'], trim(str_replace("{$data['commands'][0]} {$cmdts}", '', $data['msg'])));
+                } else {
+                    $response = $this->removeEnemy($data['bot']['id'], trim(str_replace("{$data['commands'][0]} {$cmdts}", '', $data['msg'])));
                 }
-            } else {
-                $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error($response['message']));
-            }
-        } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("Informe nome de um player para cadastrar!"));
-        }
-    }
 
-    public function rmally($tsAdmin, $message, $data)
-    {
-        if ($data['commands'][1]) {
-            $response = $this->removeAlly($data['bot']['id'], trim(str_replace($data['commands'][0], '', $data['msg'])));
-            if ($response['success']) {
-                foreach ($response['data'] as $guild) {
-                    $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success($response['message'] . " " . trim($guild['player'])));
+                if ($response['success']) {
+                    foreach ($response['data'] as $guild) {
+                        $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->success($response['message'] . " " . trim($guild['guild'])));
+                    }
+                } else {
+                    $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error($response['message']));
                 }
-            } else {
-                $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error($response['message']));
+                return;
             }
-        } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("Informe nome de uma guild para remover!"));
-        }
-    }
-
-    public function addenemy($tsAdmin, $message, $data)
-    {
-        if ($data['commands'][1]) {
-            $response = $this->addNewEnemy($data['bot']['id'], trim(str_replace($data['commands'][0], '', $data['msg'])));
-            if ($response['success']) {
-                foreach ($response['data'] as $guild) {
-                    $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success($response['message'] . " " . trim($guild['player'])));
-                }
-            } else {
-                $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error($response['message']));
-            }
-        } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("Informe nome de um player para cadastrar!"));
-        }
-    }
-
-    public function rmenemy($tsAdmin, $message, $data)
-    {
-        if ($data['commands'][1]) {
-            $response = $this->removeEnemy($data['bot']['id'], trim(str_replace($data['commands'][0], '', $data['msg'])));
-            if ($response['success']) {
-                foreach ($response['data'] as $guild) {
-                    $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success($response['message'] . " " . trim($guild['player'])));
-                }
-            } else {
-                $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error($response['message']));
-            }
-        } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error("Informe nome de uma guild para remover!"));
-        }
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error("Informe nome de um player para adicionar ou remover!"));
+        }  
     }
 
     public function claimed($tsAdmin, $message, $data)
@@ -480,7 +449,7 @@ class CommandTSProvider extends CommandsTibia implements ICommand
             foreach ($seachCity as $cty) {
                 $city .= "Cod. City: [ " . $message->info($cty->cod_city) . " ] City: [ " . $message->info($cty->city) . " ] Respawn: [ " . $message->info($cty->respawn) . " ]\n";
             }
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $city);
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $city);
             return;
         }
 
@@ -488,9 +457,9 @@ class CommandTSProvider extends CommandsTibia implements ICommand
         $clameid = $this->confclaimed($data['bot']['id'], trim(end($data['commands'])), $name, $client['data']['client_database_id']);
 
         if ($clameid['success']) {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success($clameid['message']));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->success($clameid['message']));
         } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error($clameid['message']));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error($clameid['message']));
         }
     }
 
@@ -500,9 +469,9 @@ class CommandTSProvider extends CommandsTibia implements ICommand
 
         $clameid = $this->removeClaimed($data['bot']['id'], trim(str_replace($data['commands'][0], '', $data['msg'])), false, $client['data']['client_database_id']);
         if ($clameid['success']) {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->success($clameid['message']));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->success($clameid['message']));
         } else {
-            $tsAdmin->tsAdmin()->sendMessage(3, 5, $message->error($clameid['message']));
+            $tsAdmin->tsAdmin()->sendMessage(1, $data['invoker']['id'], $message->error($clameid['message']));
         }
     }
 }
