@@ -1,5 +1,9 @@
 <?php 
 
-    echo date('Y-m-d H:i:s', strtotime('4-09-2022 16:16:31'));
+include_once __DIR__ . '/../vendor/autoload.php';
+
+    $dotenv = new Dotenv\Dotenv(__DIR__);
+    $dotenv->load();
+    print_r([getenv('CONF_MONGODB_USER'), getenv('CONF_MONGODB_PASSWD'), getenv('CONF_MONGODB_HOST'), getenv('CONF_MONGODB_COLLECTIONS'), getenv('CONF_MONGODB_SOURCE')]);
 
 ?>
