@@ -1,6 +1,5 @@
 <?php
 
-ob_flush();
 ini_set("memory_limit", "512M");
 
 require_once __DIR__ . "/../../config/includes.php";
@@ -14,6 +13,6 @@ use React\EventLoop\Loop;
 
 $bot = new TibiaBOTCase(new TibiaProvider, new TSAdminProvider, new MongoDBProvider, new MessageTSProvider);
 
-$timer = Loop::addPeriodicTimer(20, function () use ($bot) {
+$timer = Loop::addPeriodicTimer(10, function () use ($bot) {
     $bot->handle();
 });
