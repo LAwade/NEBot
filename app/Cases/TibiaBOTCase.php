@@ -330,19 +330,19 @@ class TibiaBOTCase
 
             if (in_array($player['name'], $f)) {
                 $playerDeath = ["[" . date('d/m/Y H:i:s', strtotime($player['hours'])) . "] → ", $this->message->success($player['name'])];
-                $msg = "[" . $this->message->custom('DEATH', '#979797') . "] → " . $this->message->success($player['name']) . " ≈ " . $this->message->success("FRIEND") . " → " . $this->message->info($player['reason']);
+                $msg = $this->message->custom('[DEATH]', '#979797') . " → "  . $this->message->success($player['name']) . " ≈ " . $this->message->success("FRIEND") . " → " . $this->message->info($player['reason']);
                 $total++;
             } else if (in_array($player['name'], $h)) {
                 $playerDeath = ["[" . date('d/m/Y H:i:s', strtotime($player['hours'])) . "] → ", $this->message->error($player['name'])];
-                $msg = "[" . $this->message->custom('DEATH', '#979797') . "] → " . $this->message->error($player['name']) . " ≈ " . $this->message->error("HUNTED") . " → " . $this->message->info($player['reason']);
+                $msg = $this->message->custom('[DEATH]', '#979797') . " → "  . $this->message->error($player['name']) . " ≈ " . $this->message->error("HUNTED") . " → " . $this->message->info($player['reason']);
                 $total++;
             } else if (in_array($player['name'], $a)) {
                 $playerDeath = ["[" . date('d/m/Y H:i:s', strtotime($player['hours'])) . "] → ", $this->message->success($player['name'])];
-                $msg = "[" . $this->message->custom('DEATH', '#979797') . "] → " . $this->message->success($player['name']) . " ≈ " . $this->message->success("ALLY") . " → " . $this->message->info($player['reason']);
+                $msg = $this->message->custom('[DEATH]', '#979797') . " → "  . $this->message->success($player['name']) . " ≈ " . $this->message->success("ALLY") . " → " . $this->message->info($player['reason']);
                 $total++;
             } else if (in_array($player['name'], $e)) {
                 $playerDeath = ["[" . date('d/m/Y H:i:s', strtotime($player['hours'])) . "] → ", $this->message->error($player['name'])];
-                $msg = "[" . $this->message->custom('DEATH', '#979797') . "] → " . $this->message->error($player['name']) . " ≈ " . $this->message->error("ENEMY") . " → " . $this->message->info($player['reason']);
+                $msg = $this->message->custom('[DEATH]', '#979797') . " → " . $this->message->error($player['name']) . " ≈ " . $this->message->error("ENEMY") . " → " . $this->message->info($player['reason']);
                 $total++;
             }
 
@@ -350,7 +350,7 @@ class TibiaBOTCase
                 $death[] = $playerDeath;
             }
 
-            if (strtotime($player['hours']) > strtotime($notify->deaths)) {
+            if ($msg && strtotime($player['hours']) > strtotime($notify->deaths)) {
                 $lastDeath[] = $player['hours'];
                 $this->news($msg);
                 $this->tsAdmin->tsAdmin()->sendMessage(3, 5, $msg);
