@@ -58,4 +58,3 @@ define('CONF_MONGODB_PASSWD', 'Hunt3r195');
 define('CONF_MONGODB_HOST', '152.67.45.241:27017');
 define('CONF_MONGODB_COLLECTIONS', 'tibiabot');
 define('CONF_MONGODB_SOURCE', 'admin');
-]);
