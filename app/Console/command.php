@@ -1,5 +1,6 @@
 <?php
 
+ob_flush();
 require_once __DIR__ . "/../../config/includes.php";
 
 use App\Consumers\CommandBot;
