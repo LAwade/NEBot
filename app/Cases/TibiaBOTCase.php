@@ -358,7 +358,6 @@ class TibiaBOTCase
         }
 
         if ($lastDeath[0]) {
-            sort($lastDeath);
             $notify->deaths = date('Y-m-d H:i:s', strtotime($lastDeath[0]));
             $notify->save();
         }
