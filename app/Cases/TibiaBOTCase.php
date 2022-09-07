@@ -181,7 +181,7 @@ class TibiaBOTCase
         $h = $this->getArray($this->getData('hunteds'));
 
         usort($neutrals['data'], function($a, $b){
-            return $a['level'] > $b['level'];
+            return $a['level'] < $b['level'];
         });
 
         foreach ($neutrals['data'] as $player) {
