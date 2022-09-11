@@ -198,7 +198,7 @@ class TibiaBOTCase
             }
         }
 
-        $descNeutral = $this->message->custom("Neutral List - {$total} Onlines - Updated: " . date('d/m/Y H:i:s'), 'black');
+        $descNeutral = $this->message->custom("Neutral List - " . self::LIMITE_DESCRIPTION . "/{$total} Onlines - Updated: " . date('d/m/Y H:i:s'), 'black');
         $high = $this->message->table($neutral);
         $data['CHANNEL_NAME'] = $this->channelOnline($this->tsAdmin->tsAdmin()->channelInfo($this->tibia->neutral_channel), $total);
         $data['CHANNEL_DESCRIPTION'] = $descNeutral . "\n" . $high;
