@@ -180,6 +180,7 @@ class TibiaBOTCase
         $f = $this->getArray($this->getData('friends'));
         $h = $this->getArray($this->getData('hunteds'));
 
+        $neutrals = json_decode(json_encode($neutrals), true);
         usort($neutrals['data'], function($a, $b){
             return $a['level'] < $b['level'];
         });
