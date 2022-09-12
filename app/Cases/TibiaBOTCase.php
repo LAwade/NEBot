@@ -107,13 +107,13 @@ class TibiaBOTCase
 
         $mongo = $this->mongodb->selectCollection('tibiabot', 'guilds');
         $datafriends = $mongo->find(['guild' => ['$in' => $dataFriends]]);
-        $friends = $this->order($datafriends, 'level');
-        $friends = $this->order($datafriends, 'vocation');
+        $friends = $this->order($datafriends, 'level', true);
+        $friends = $this->order($datafriends, 'vocation', true);
 
         if (!$friends[0]) {
             return false;
         }
-        
+
         $guilds = $this->guilds($friends, $this->tibia->level_tibia, 'friends');
 
         $online = $guilds['online_high'] + $guilds['online_low'];
@@ -151,8 +151,8 @@ class TibiaBOTCase
             return false;
         }
 
-        $hunteds = $this->order($hunteds, 'level');
-        $hunteds = $this->order($hunteds, 'vocation');
+        $hunteds = $this->order($hunteds, 'level', true);
+        $hunteds = $this->order($hunteds, 'vocation', true);
 
         $guilds = $this->guilds($hunteds, $this->tibia->level_tibia, 'hunteds');
         $online = $guilds['online_high'] + $guilds['online_low'];
@@ -184,7 +184,7 @@ class TibiaBOTCase
         $f = $this->getArray($this->getData('friends'));
         $h = $this->getArray($this->getData('hunteds'));
 
-        $neutrals = $this->order($neutrals, 'level');
+        $neutrals = $this->order($neutrals, 'level', false);
 
         foreach ($neutrals['data'] as $player) {
             $this->setData($player, 'neutrals');
@@ -546,10 +546,10 @@ class TibiaBOTCase
         return trim($array[0]) . " ($online)";
     }
 
-    private function order($data, $indice, $op = '<')
+    private function order($data, $indice, $mult, $op = '<')
     {
         $data = json_decode(json_encode($data), true);
-        if(in_array(true, array_map('is_array',$data), true)){
+        if($mult == true){
             foreach ($data as $k => $v) {
                 usort($data[$k]['data'], function ($a, $b) use ($indice, $op) {
                     if($op == '<'){
