@@ -107,12 +107,13 @@ class TibiaBOTCase
 
         $mongo = $this->mongodb->selectCollection('tibiabot', 'guilds');
         $datafriends = $mongo->find(['guild' => ['$in' => $dataFriends]]);
-        $friends = $datafriends->toArray();
+        $friends = $this->order($datafriends, 'level');
+        $friends = $this->order($datafriends, 'vocation');
 
         if (!$friends[0]) {
             return false;
         }
-
+        
         $guilds = $this->guilds($friends, $this->tibia->level_tibia, 'friends');
 
         $online = $guilds['online_high'] + $guilds['online_low'];
@@ -150,6 +151,9 @@ class TibiaBOTCase
             return false;
         }
 
+        $hunteds = $this->order($hunteds, 'level');
+        $hunteds = $this->order($hunteds, 'vocation');
+
         $guilds = $this->guilds($hunteds, $this->tibia->level_tibia, 'hunteds');
         $online = $guilds['online_high'] + $guilds['online_low'];
         $descHigh = $this->message->custom("Hunted List - {$guilds['online_high']}/$online de {$guilds['total']} - Updated: " . date('d/m/Y H:i:s'), 'black');
@@ -180,10 +184,7 @@ class TibiaBOTCase
         $f = $this->getArray($this->getData('friends'));
         $h = $this->getArray($this->getData('hunteds'));
 
-        $neutrals = json_decode(json_encode($neutrals), true);
-        usort($neutrals['data'], function($a, $b){
-            return $a['level'] < $b['level'];
-        });
+        $neutrals = $this->order($neutrals, 'level');
 
         foreach ($neutrals['data'] as $player) {
             $this->setData($player, 'neutrals');
@@ -543,5 +544,30 @@ class TibiaBOTCase
     {
         $array = explode("(", $data['data']['channel_name']);
         return trim($array[0]) . " ($online)";
+    }
+
+    private function order($data, $indice, $op = '<')
+    {
+        $data = json_decode(json_encode($data), true);
+        if(in_array(true, array_map('is_array',$data), true)){
+            foreach ($data as $k => $v) {
+                usort($data[$k]['data'], function ($a, $b) use ($indice, $op) {
+                    if($op == '<'){
+                        return $a[$indice] < $b[$indice];
+                    } else {
+                        return $a[$indice] > $b[$indice];
+                    }
+                });
+            }
+        } else {
+            usort($data['data'], function ($a, $b) use ($indice, $op) {
+                if($op == '<'){
+                    return $a[$indice] < $b[$indice];
+                } else {
+                    return $a[$indice] > $b[$indice];
+                }
+            });
+        }
+        return $data;
     }
 }
