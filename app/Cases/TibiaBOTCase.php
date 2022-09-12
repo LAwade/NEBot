@@ -106,9 +106,10 @@ class TibiaBOTCase
         }
 
         $mongo = $this->mongodb->selectCollection('tibiabot', 'guilds');
-        $datafriends = $mongo->find(['guild' => ['$in' => $dataFriends]]);
-        $friends = $this->order($datafriends, 'level', true);
-        $friends = $this->order($datafriends, 'vocation', true);
+        $friends = $mongo->find(['guild' => ['$in' => $dataFriends]]);
+        $friends = $this->order($friends, 'vocation', true);
+        $friends = $this->order($friends, 'level', true);
+        
 
         if (!$friends[0]) {
             return false;
