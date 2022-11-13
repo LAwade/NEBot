@@ -329,6 +329,8 @@ class TibiaBOTCase
             $notify->fk_id_bot = $this->tibia->fk_id_bot;
         }
 
+        logger('deaths')->debug(print_r([$f, $h, $a, $e], true));
+
         $lastDeath = [];
         foreach ($deaths['data'] as $player) {
             $msg = null;
@@ -356,18 +358,12 @@ class TibiaBOTCase
                 $death[] = $playerDeath;
             }
 
-            logger('deaths')->debug("msg: ". $msg . " - time_hours: " . strtotime($player['hours']) . " - time_deaths: ". strtotime($notify->deaths));
-
             if ($msg && strtotime($player['hours']) > strtotime($notify->deaths)) {
                 $lastDeath[] = $player['hours'];
                 $this->news($msg);
                 $this->tsAdmin->tsAdmin()->sendMessage(3, 5, $msg);
             }
         }
-
-        logger('deaths')->debug("Notify: ". print_r($notify, true));
-        logger('deaths')->debug("Player: ". print_r($player, true));
-        logger('deaths')->debug("Death: ". print_r($death, true));
 
         if ($lastDeath[0]) {
             $notify->deaths = date('Y-m-d H:i:s', strtotime($lastDeath[0]));
