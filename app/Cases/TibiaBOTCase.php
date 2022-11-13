@@ -363,6 +363,10 @@ class TibiaBOTCase
             }
         }
 
+        logger('deaths')->debug("Notify: ". print_r($notify, true));
+        logger('deaths')->debug("Player: ". print_r($player, true));
+        logger('deaths')->debug("lastDeath: ". print_r($lastDeath, true));
+
         if ($lastDeath[0]) {
             $notify->deaths = date('Y-m-d H:i:s', strtotime($lastDeath[0]));
             $notify->save();
