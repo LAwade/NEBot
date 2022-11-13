@@ -107,14 +107,13 @@ class TibiaBOTCase
 
         $mongo = $this->mongodb->selectCollection('tibiabot', 'guilds');
         $friends = $mongo->find(['guild' => ['$in' => $dataFriends]])->toArray();
-        $friends = $this->order($friends, 'vocation', true);
-        $friends = $this->order($friends, 'level', true);
-        
 
         if (!$friends[0]) {
             return false;
         }
-
+        $friends = $this->order($friends, 'vocation', true);
+        $friends = $this->order($friends, 'level', true);
+        
         $guilds = $this->guilds($friends, $this->tibia->level_tibia, 'friends');
 
         $online = $guilds['online_high'] + $guilds['online_low'];
