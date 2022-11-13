@@ -356,6 +356,8 @@ class TibiaBOTCase
                 $death[] = $playerDeath;
             }
 
+            logger('deaths')->debug("msg: ". $msg . " - time_hours: " . strtotime($player['hours']) . " - time_deaths: ". strtotime($notify->deaths));
+
             if ($msg && strtotime($player['hours']) > strtotime($notify->deaths)) {
                 $lastDeath[] = $player['hours'];
                 $this->news($msg);
