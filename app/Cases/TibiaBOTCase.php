@@ -318,6 +318,7 @@ class TibiaBOTCase
             return false;
         }
 
+        logger('deaths')->debug(print_r($this->getData('friends'), true));
         $f = $this->getArray($this->getData('friends'));
         $h = $this->getArray($this->getData('hunteds'));
         $a = $this->getArray($this->getData('ally'));
