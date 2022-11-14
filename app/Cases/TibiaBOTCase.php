@@ -319,6 +319,7 @@ class TibiaBOTCase
         }
 
         $f = $this->getArray($this->getData('friends'));
+        logger('deaths')->debug(print_r($f, true));
         $h = $this->getArray($this->getData('hunteds'));
         $a = $this->getArray($this->getData('ally'));
         $e = $this->getArray($this->getData('enemy'));
