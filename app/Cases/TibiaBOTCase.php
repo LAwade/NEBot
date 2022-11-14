@@ -329,8 +329,6 @@ class TibiaBOTCase
             $notify->fk_id_bot = $this->tibia->fk_id_bot;
         }
 
-        logger('deaths')->debug(print_r([$f, $h, $a, $e], true));
-
         $lastDeath = [];
         foreach ($deaths['data'] as $player) {
             $msg = null;
