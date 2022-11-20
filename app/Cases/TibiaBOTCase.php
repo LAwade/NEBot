@@ -43,7 +43,7 @@ class TibiaBOTCase
 
     private $data = [];
 
-    const LIMITE_DESCRIPTION = 90;
+    const LIMITE_DESCRIPTION = 100;
 
     public function __construct(ITibia $tibiabot, ITSAdmin $tsAdmin, IMongoDB $mongodb, IMessage $message)
     {
